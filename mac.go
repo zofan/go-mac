@@ -15,17 +15,17 @@ func GetPrefix(vendor string) string {
 		}
 	}
 
-	return fake.RandHexString(2) + `:` + fake.RandHexString(2) + `:` + fake.RandHexString(2)
+	return fake.HexString(2) + `:` + fake.HexString(2) + `:` + fake.HexString(2)
 }
 
 func RandVendor(vendor string) string {
 	return GetPrefix(vendor) + `:` +
-		fake.RandHexString(2) + `:` + fake.RandHexString(2) + `:` + fake.RandHexString(2)
+		fake.HexString(2) + `:` + fake.HexString(2) + `:` + fake.HexString(2)
 }
 
 func Rand(split string) string {
 	return Prefixes[rand.Intn(len(Prefixes)-1)].Prefix + split +
-		fake.RandHexString(2) + split + fake.RandHexString(2) + split + fake.RandHexString(2)
+		fake.HexString(2) + split + fake.HexString(2) + split + fake.HexString(2)
 }
 
 func RandDash() string {

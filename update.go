@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/zofan/go-fwrite"
 	"github.com/zofan/go-req"
+	"github.com/zofan/go-xmlre"
 	"path/filepath"
-	"regexp"
 	"runtime"
 	"strings"
 	"time"
@@ -25,7 +25,7 @@ func UpdatePrefixes() error {
 	body := string(resp.ReadAll())
 	body = strings.ReplaceAll(body, `&nbsp;`, ` `)
 
-	rowRe := regexp.MustCompile(`(?s)<VendorMapping mac_prefix="([^"]+)" vendor_name="([^"]+)"/>`)
+	rowRe := xmlre.Compile(`<VendorMapping mac_prefix="([^"]+)" vendor_name="([^"]+)"/>`)
 
 	for _, row := range rowRe.FindAllStringSubmatch(body, -1) {
 		p := &Prefix{
